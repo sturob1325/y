@@ -1,171 +1,398 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ianina Caceres - Abogada</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Paraguay Solutions - Immigration & Fiscal Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CORE VARIABLES */
+        :root {
+            --primary-color: #152440; /* Darker Navy */
+            --accent-color: #00c2f3; /* Bright Blue */
+            --whatsapp-green: #25d366; /* Standard WhatsApp Color */
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            
+            /* FONTS */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--text-dark); line-height: 1.6; background-color: var(--white); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* NAVIGATION */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; 
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { 
+            font-family: var(--font-heading);
+            font-size: 24px; 
+            font-weight: 700; 
+            color: var(--white);
+            display: flex; align-items: center; gap: 10px; 
+        }
+        nav ul { display: flex; gap: 30px; align-items: center; }
+        nav a { 
+            font-size: 14px; 
+            font-weight: 500; 
+            text-transform: uppercase; 
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.5px;
+        }
+        nav a:hover { color: var(--accent-color); opacity: 1; }
+        
+        /* HERO SECTION */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 100px 5%;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Keeps content left-aligned */
+            min-height: 75vh;
+            
+            background-image: linear-gradient(to right, rgba(21, 36, 64, 0.9) 0%, rgba(21, 36, 64, 0.5) 60%, rgba(21, 36, 64, 0.2) 100%), 
+                              url('hero.jpg.png'); 
+            
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero h1 { 
+            font-family: var(--font-heading);
+            font-size: 52px; 
+            margin-bottom: 25px; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            max-width: 650px;
+        }
+        .hero h3 { 
+            font-size: 18px; 
+            font-weight: 400; 
+            margin-bottom: 35px; 
+            max-width: 550px; 
+            opacity: 0.9; 
+            line-height: 1.8;
+        }
+        .btn-main {
+            display: inline-block; 
+            background-color: var(--accent-color);
+            color: var(--white); 
+            padding: 18px 35px; 
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase; 
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-main:hover { 
+            background-color: #00a0c9;
+            transform: translateY(-2px); 
+        }
+
+        /* SERVICES GRID */
+        .services { padding: 100px 5%; background: var(--bg-light); }
+        .section-title { 
+            font-family: var(--font-heading);
+            font-size: 36px; 
+            color: var(--primary-color); 
+            margin-bottom: 60px; 
+            text-align: center; 
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 20px auto 0;
+        }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card {
+            background: var(--white); 
+            padding: 50px 40px; 
+            border-radius: 0;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+        .service-card:hover { 
+            transform: translateY(-10px); 
+            border-bottom: 3px solid var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .service-icon { width: 50px; height: 50px; margin-bottom: 25px; fill: var(--accent-color); }
+        .service-card h3 { 
+            font-family: var(--font-heading);
+            font-size: 22px; 
+            margin-bottom: 15px; 
+            color: var(--primary-color); 
+        }
+        .service-card p { font-size: 15px; color: var(--text-light); line-height: 1.7; }
+
+        /* NEWS SECTION */
+        .news { padding: 100px 5%; background: var(--white); }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .news-card { 
+            background: var(--white); 
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .news-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .news-img { width: 100%; height: 220px; object-fit: cover; }
+        .news-content { padding: 30px; }
+        .news-content h4 { 
+            font-family: var(--font-heading);
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            color: var(--primary-color); 
+            line-height: 1.4;
+        }
+        .news-content p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+        .news-meta { display: flex; align-items: center; font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+        .news-meta img { width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; }
+
+        /* FOOTER */
+        footer { background-color: #111822; color: #fff; padding: 80px 5% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 60px; }
+        .footer-col h3 { 
+            font-family: var(--font-heading);
+            font-size: 20px; 
+            margin-bottom: 25px; 
+            color: var(--white); 
+        }
+        .footer-col p, .footer-col a { color: #8a99a8; font-size: 14px; margin-bottom: 12px; display: block; }
+        .footer-col a:hover { color: var(--accent-color); padding-left: 5px; }
+        .newsletter input { 
+            padding: 15px; 
+            width: 100%; 
+            margin-bottom: 15px; 
+            border: none; 
+            background: #1a2430;
+            color: white;
+            outline: none;
+        }
+        .copyright { 
+            border-top: 1px solid #1a2430; 
+            padding-top: 30px; 
+            text-align: center; 
+            font-size: 13px; 
+            color: #555; 
+        }
+
+        /* WHATSAPP BUTTON STYLE */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--accent-color); /* Turns brand blue on hover */
+            transform: scale(1.1);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 38px; }
+            header { flex-direction: column; gap: 20px; padding: 20px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero { align-items: center; text-align: center; } 
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .whatsapp-icon { width: 30px; height: 30px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="overlay">
-            <nav class="navbar">
-                <div class="logo">ianina<span class="highlight">caceres.</span></div>
-                <ul class="nav-links">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Quién soy</a></li>
-                    <li><a href="#">Áreas de práctica</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
-            
-            <div class="hero-content">
-                <h1>Ianina <span class="highlight">Caceres</span></h1>
-                <h2>Abogada y Oficial de Justicia</h2>
-                <p>Soy un abogado experto con base en Asunción.<br>Estoy aquí para ayudarlo con su asunto legal.</p>
-                <a href="#" class="btn-primary">Haga una cita</a>
-            </div>
+    <header>
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="var(--accent-color)" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5 9.5 9.75 12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
+            </svg>
+            Paraguay Solutions
         </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#" style="color: var(--accent-color);">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="services">
-        <h2 class="section-title">Mis áreas de práctica legal</h2>
-        <div class="grid-container">
-            <div class="card">
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Proyectos de Inversión Extranjera</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fas fa-home"></i></div>
-                <h3>Asesoría al Inversor Extranjero</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fas fa-landmark"></i></div>
-                <h3>Intervención en Litigios Judiciales</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-             <div class="card">
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Proyectos de Inversión Extranjera</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Proyectos de Inversión Extranjera</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
-                <h3>Proyectos de Inversión Extranjera</h3>
-                <p>Nuestro Departamento de Proyectos se destaca por brindar asesoría legal a clientes extranjeros.</p>
-            </div>
-        </div>
+    <section class="hero">
+        <h1>Seamless Relocation & <br>Financial Freedom</h1>
+        <h3>
+            We specialize in helping international clients secure legal residency, establish companies, and optimize their fiscal strategy in Paraguay efficiently.
+        </h3>
+        <a href="#" class="btn-main">Request an Appointment</a>
     </section>
 
-    <section class="testimonials">
-        <h2 class="section-title">Testimonios de clientes</h2>
-        <div class="testimonial-content">
-            <img src="https://via.placeholder.com/100" alt="Client Photo" class="client-photo">
-            <p class="quote">"Yanina es la mejor abogada de Paraguay, ella ganó su caso y tomará todo el dinero de la persona por usted. Ella hizo esto conmigo y me compensaron con más de un millón de dólares. Ella es la mejor."</p>
-            <div class="client-info">
-                <strong>Jackie Robson</strong>
-                <span>CEO Baby TV</span>
+    <section class="services">
+        <h2 class="section-title">Professional Services</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                <h3>Immigration & Residency</h3>
+                <p>
+                    Whether you are seeking a temporary permit or permanent status, our team manages the entire bureaucratic pipeline. We ensure your ID (Cédula) is processed without delays.
+                </p>
             </div>
-            <div class="dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+                <h3>Fiscal Planning</h3>
+                <p>
+                    Take advantage of Paraguay's territorial tax regime. We provide expert advice on how to structure your finances so that foreign-sourced income remains tax-exempt legally.
+                </p>
             </div>
+
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 24 24">
+                    <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                </svg>
+                <h3>Business Incorporation</h3>
+                <p>
+                    Launching a business? We facilitate the creation of EAS (simplified share companies) and handle investor visas (SUACE) so you can start operating immediately.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 24 24">
+                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                </svg>
+                <h3>Concierge & Support</h3>
+                <p>
+                    Moving to a new country can be daunting. We assist with finding apartments, opening local bank accounts, and navigating daily life in Asunción.
+                </p>
+            </div>
+
         </div>
     </section>
 
     <section class="news">
-        <h2 class="section-title">Noticias recientes</h2>
-        <div class="grid-container">
-            <div class="news-card">
-                <div class="news-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
-                <div class="news-body">
-                    <h3>10 secret tips to managing a remote team</h3>
-                    <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed...</p>
-                    <div class="author">
-                        <img src="https://via.placeholder.com/40" alt="Author">
-                        <div>
-                            <strong>John Birmingham</strong>
-                            <span>25 Diciembre 2019</span>
-                        </div>
+        <h2 class="section-title">Insights & Updates</h2>
+        <div class="news-grid">
+            
+            <a href="#" class="news-card">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=60" alt="News Image" class="news-img">
+                <div class="news-content">
+                    <h4>Immigration Law Updates</h4>
+                    <p>A breakdown of the recent changes to Law 6984/22 and how they affect new applicants for permanent status.</p>
+                    <div class="news-meta">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Author">
+                        <span>Legal Team • Jan 4, 2026</span>
                     </div>
                 </div>
-            </div>
-            <div class="news-card">
-                <div class="news-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
-                <div class="news-body">
-                    <h3>10 secret tips to managing a remote team</h3>
-                    <p>Testing customers with respect earns you loyalty. Dig into marketing personas that reflect real people...</p>
-                    <div class="author">
-                        <img src="https://via.placeholder.com/40" alt="Author">
-                        <div>
-                            <strong>John Birmingham</strong>
-                            <span>25 Diciembre 2019</span>
-                        </div>
+            </a>
+
+            <a href="#" class="news-card">
+                <img src="https://images.unsplash.com/photo-1554224154-260327c00c4b?auto=format&fit=crop&w=500&q=60" alt="News Image" class="news-img">
+                <div class="news-content">
+                    <h4>Territorial Tax Benefits</h4>
+                    <p>Why Paraguay is becoming a top destination for digital nomads seeking to optimize their tax burden legally.</p>
+                    <div class="news-meta">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Author">
+                        <span>Legal Team • Dec 28, 2025</span>
                     </div>
                 </div>
-            </div>
-            <div class="news-card">
-                <div class="news-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
-                <div class="news-body">
-                    <h3>What Science Says About Cryotherapy</h3>
-                    <p>An age-old product gets a thoroughly modern, deeply weird makeover all over the world.</p>
-                    <div class="author">
-                        <img src="https://via.placeholder.com/40" alt="Author">
-                        <div>
-                            <strong>John Birmingham</strong>
-                            <span>25 Diciembre 2019</span>
-                        </div>
+            </a>
+
+            <a href="#" class="news-card">
+                <img src="https://images.unsplash.com/photo-1526304640152-d4619684e484?auto=format&fit=crop&w=500&q=60" alt="News Image" class="news-img">
+                <div class="news-content">
+                    <h4>Pre-Travel Checklist</h4>
+                    <p>Ensure you have all necessary apostilled documents before departing for Asunción to avoid delays.</p>
+                    <div class="news-meta">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Author">
+                        <span>Legal Team • Dec 15, 2025</span>
                     </div>
                 </div>
-            </div>
+            </a>
+
         </div>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="logo">ianina<span class="highlight">caceres.</span></div>
-                <p>Abogada de la ciudad de Asunción número de registro 88554 corte suprema de Paraguay</p>
+                <h3>Get in Touch</h3>
+                <p>jfioejfiefiejfe<br>Asunción, Paraguay</p>
+                <p>contact@paraguaysolutions.com</p>
+                <p>+595 982 123 456</p>
             </div>
+
             <div class="footer-col">
-                <h4>Contáctame</h4>
-                <p>yani_caceres@gmail.com</p>
-                <p>+595 984 0950</p>
-                <p>243 Campo Vía<br>Barrio Kennedy<br>Lambaré, Paraguay</p>
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
             </div>
+
             <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Quién Soy</a></li>
-                    <li><a href="#">Áreas de Práctica</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Estar al día</h4>
-                <p>Suscríbase a nuestro boletín:</p>
-                <form class="newsletter">
-                    <input type="email" placeholder="Correo electrónico">
-                    <button type="submit">→</button>
-                </form>
+                <h3>Stay Informed</h3>
+                <p>Sign up to receive critical alerts regarding residency and tax laws.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your email address">
+                    <a href="#" class="btn-main" style="padding: 15px; width: 100%; text-align: center; display: block;">Join Newsletter</a>
+                </div>
             </div>
         </div>
         <div class="copyright">
-            © 2021 Yanina Caceres. Site designed by SOMEWEBTECH
+            © 2026 Paraguay Solutions. All rights reserved.
         </div>
     </footer>
+
+    <a href="https://wa.me/595984192950" class="whatsapp-float" target="_blank">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.029.563 1.708.865 2.806.865 3.182 0 5.769-2.586 5.769-5.766.001-3.18-2.584-5.767-5.769-5.767zm0 10.157c-.927 0-1.602-.249-2.518-.793l-1.801.472.482-1.758c-.506-.807-.791-1.57-.791-2.312 0-2.42 1.967-4.387 4.386-4.387 2.42 0 4.387 1.967 4.387 4.387 0 2.42-1.967 4.391-4.145 4.391zm2.396-3.287c-.131-.066-.777-.384-.897-.428-.12-.044-.208-.066-.296.066-.088.132-.34.428-.417.516-.077.088-.154.099-.285.033-.131-.066-.554-.204-1.055-.65-.389-.346-.652-.773-.729-.905-.077-.132-.008-.203.058-.268.059-.059.132-.154.198-.231.066-.077.088-.132.132-.22.044-.088.022-.165-.011-.231-.033-.066-.296-.714-.406-.978-.106-.255-.213-.22-.296-.224-.077-.004-.165-.004-.253-.004-.088 0-.231.033-.352.165-.121.132-.462.451-.462 1.1s.473 1.275.539 1.363c.066.088.931 1.42 2.256 1.991.315.136.56.217.753.278.315.1.602.086.828.052.247-.037.777-.317.887-.624.11-.307.11-.57.077-.624-.033-.054-.121-.087-.252-.153z"/>
+        </svg>
+    </a>
 
 </body>
 </html>
